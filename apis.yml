@@ -44,6 +44,8 @@ apis:
         type: Documentation
       - url: https://docs.magiceden.io/reference/solana-overview
         type: APIReference
+      - url: openapi/magiceden-openapi.yaml
+        type: OpenAPI
     description: >-
       Collection data endpoints for the Magic Eden Solana NFT marketplace. Provides access to
       collection listings, collection statistics, collection attributes, collection activities,
@@ -230,6 +232,22 @@ common:
     url: plans/magiceden-plans.yml
   - type: FinOps
     url: finops/magiceden-finops.yml
+  - type: OpenAPI
+    url: openapi/magiceden-openapi.yaml
+  - type: JSONLDContext
+    url: json-ld/magiceden-context.jsonld
+  - type: JSONLDProvider
+    url: json-ld/magiceden-provider.jsonld
+  - type: JSONSchema
+    url: json-schema/magiceden-collection.json
+  - type: JSONSchema
+    url: json-schema/magiceden-nft-token.json
+  - type: JSONSchema
+    url: json-schema/magiceden-activity.json
+  - type: JSONSchema
+    url: json-schema/magiceden-wallet.json
+  - type: JSONSchema
+    url: json-schema/magiceden-amm-pool.json
   - type: UseCases
     data:
       - name: NFT Portfolio Tracker
