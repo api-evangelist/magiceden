@@ -1,0 +1,114 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Magic Eden
+providerId: magiceden
+created: '2026-06-13'
+modified: '2026-06-13'
+reconciled: true
+tags:
+  - NFT
+  - Marketplace
+  - Solana
+  - Bitcoin
+  - Ordinals
+  - FinOps
+  - FOCUS
+description: >-
+  FOCUS-aligned FinOps for Magic Eden API consumption. The Magic Eden API does not carry a
+  direct monetary cost at the public free tier; cost risk is operational rather than financial,
+  manifesting as rate-limit throttling and potential IP blocks that degrade application
+  availability. For Solana-based trading integrations, on-chain transaction fees (SOL lamports)
+  represent the primary cost metric. Applications requiring elevated QPS should account for
+  potential future commercialization given Magic Eden's infrastructure transition announcements.
+sources:
+  - https://help.magiceden.io/en/articles/6533403-how-to-use-the-magic-eden-api-access-keys-rate-limits-docs
+  - https://help.magiceden.io/en/articles/13885533-magic-eden-api-infrastructure-changes
+  - https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Magic Eden
+serviceCategory: NFT Marketplace API
+billingModel:
+  pricingCategory: Usage
+  billingFrequency: No direct billing at current public tier; on-chain fees per transaction
+  billingCurrency: SOL (on-chain Solana fees) / USD (if future paid tiers introduced)
+  chargeCategories:
+    - Usage
+focusColumns:
+  ServiceName: Magic Eden API
+  ServiceCategory: NFT Marketplace
+  ProviderName: Magic Eden
+  PublisherName: Magic Eden
+  InvoiceIssuerName: Magic Eden
+  BillingCurrency: SOL / USD
+  ChargeCategory: Usage
+  PricingCategory: Usage
+  PricingUnit: request / transaction
+meters:
+  - name: api_requests
+    description: >-
+      Total HTTP requests made against Magic Eden API endpoints across Solana, Ordinals, and
+      Runes APIs. Free at default QPM; no direct monetary cost at current free tier, but high
+      request volumes risk throttling and IP blocks which carry operational cost.
+    unit: request
+    aggregation: sum
+    dimensions:
+      - chain
+      - endpoint_category
+      - key_tier
+  - name: solana_transaction_fees
+    description: >-
+      On-chain Solana transaction fees (in lamports) incurred when trading instruction endpoints
+      are used and the returned unsigned transactions are signed and submitted to the Solana
+      network. Base fee is 5,000 lamports per signature plus optional priority fees.
+    unit: lamport
+    aggregation: sum
+    dimensions:
+      - transaction_type
+      - num_signatures
+      - priority_fee_cu
+  - name: throttle_events
+    description: >-
+      Count of API request failures due to rate limiting (429 or 1006 responses). Throttle
+      events represent indirect cost through degraded service availability and lost API capacity.
+      High throttle rates indicate a need for request pacing or API key upgrade.
+    unit: event
+    aggregation: count
+    dimensions:
+      - chain
+      - endpoint_category
+      - time_window
+principles:
+  - name: Visibility
+    description: >-
+      Instrument all Magic Eden API calls with chain, endpoint category, and response code
+      dimensions. Track throttle events (429/1006) separately from successful requests to measure
+      effective vs attempted QPS. Log on-chain transaction fees from Solana RPC getTransaction
+      calls for fee attribution by trading operation type.
+  - name: Allocation
+    description: >-
+      Tag API call volumes by application component (data feed, trading bot, portfolio tracker,
+      analytics pipeline) to understand which workloads drive QPM consumption. Attribute Solana
+      transaction fees to the marketplace operation type (buy, sell, bid, cancel) for per-trade
+      cost tracking.
+  - name: Optimization
+    description: >-
+      Replace polling collection statistics with scheduled batch pulls rather than per-request
+      calls. Cache NFT metadata responses since token metadata rarely changes. Batch token
+      lookups using the multi-token endpoint instead of individual requests. Avoid redundant
+      wallet activity polling by caching last-seen activity timestamps.
+  - name: Accountability
+    description: >-
+      Set QPM consumption budgets per integration and alert on sustained throttle-event rates
+      above a threshold as a leading indicator of capacity exhaustion. Review Solana transaction
+      fee spend weekly for trading bots to detect unexpected fee escalation from priority fees
+      during network congestion. Plan for API deprecation risk given Magic Eden's stated
+      reduction of developer support.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

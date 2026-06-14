@@ -1,0 +1,86 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Magic Eden
+providerId: magiceden
+created: '2026-06-13'
+modified: '2026-06-13'
+reconciled: true
+tags:
+  - NFT
+  - Marketplace
+  - Solana
+  - Bitcoin
+  - Ordinals
+  - Rate Limiting
+description: >-
+  Rate limits for Magic Eden's public API endpoints across the Solana, Ordinals, and Runes APIs.
+  Public (keyless) access is subject to per-IP QPM limits. Higher QPS tiers require an approved
+  API key obtained via the Magic Eden API key application form. IP addresses that exceed limits
+  or engage in API spamming receive a 1006 error code and may be blocked. The Bitcoin/Ordinals
+  API has been announced for shutdown as of March 27, 2026.
+sources:
+  - https://help.magiceden.io/en/articles/6533403-how-to-use-the-magic-eden-api-access-keys-rate-limits-docs
+  - https://docs.magiceden.io/reference/solana-api-keys
+  - https://docs.magiceden.io/reference/ordinals-api-keys
+responseCodes:
+  throttled: 429
+  blocked: 1006
+limits:
+  - name: Solana API - Default public queries per minute
+    scope: ip
+    metric: requests_per_minute
+    limit: 120
+    timeFrame: 60s
+    notes: >-
+      Default rate limit for the Solana API without an API key. Equivalent to 2 queries per
+      second. Applies per IP address to all Solana API endpoints. Exceeding this limit results
+      in request throttling or a 1006 error code.
+  - name: Solana API - Default QPS (queries per second)
+    scope: ip
+    metric: requests_per_second
+    limit: 2
+    timeFrame: 1s
+    notes: >-
+      Equivalent expression of the 120 QPM default limit as 2 queries per second (QPS).
+      Higher QPS is available to approved API key holders.
+  - name: Ordinals API - Default public queries per minute
+    scope: ip
+    metric: requests_per_minute
+    limit: 30
+    timeFrame: 60s
+    notes: >-
+      Default rate limit for the Ordinals (Bitcoin) API without an API key. Lower than the
+      Solana API default. Note: The Bitcoin/Ordinals API is scheduled for shutdown March 27, 2026.
+  - name: Polygon API - Default public queries per minute
+    scope: ip
+    metric: requests_per_minute
+    limit: 30
+    timeFrame: 60s
+    notes: >-
+      Default rate limit for the Polygon EVM API. Range is 30-120 QPM depending on endpoint.
+      The EVM API has been deprecated and active developer support has ended.
+policies:
+  - name: API key for higher QPS
+    description: >-
+      Developers who require more than the default QPM limit can apply for an API key via the
+      Magic Eden API key application form at Airtable. Once approved, the API key grants access
+      to higher QPS limits and potentially gated endpoints. Include the key as a request header.
+  - name: 1006 Error on abuse
+    description: >-
+      Magic Eden returns a 1006 error code and may apply IP-level bans to clients that exceed
+      rate limits or engage in API spamming. Clients should implement exponential backoff on
+      error responses and avoid tight polling loops against public endpoints.
+  - name: Use public shared endpoints
+    description: >-
+      Magic Eden recommends using the shared public endpoints specifically designed for public
+      use rather than attempting to bypass rate limits through proxies or request flooding.
+      Circumvention is prohibited under the API Terms of Service.
+  - name: Plan for deprecation
+    description: >-
+      The Bitcoin/Ordinals API and EVM API have entered end-of-life. Developers building on
+      these surfaces should plan data migration and not increase dependency on these endpoints.
+      No migration support is provided by Magic Eden.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

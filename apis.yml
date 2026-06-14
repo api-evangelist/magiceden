@@ -1,0 +1,263 @@
+aid: magiceden
+url: https://raw.githubusercontent.com/api-evangelist/magiceden/refs/heads/main/apis.yml
+name: Magic Eden
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - NFT
+  - NFT Marketplace
+  - Multi-Chain
+  - Solana
+  - Bitcoin
+  - Ordinals
+  - Runes
+  - Ethereum
+  - Polygon
+  - Web3
+  - Blockchain
+  - DeFi
+  - Trading
+description: >-
+  Magic Eden is a multi-chain NFT marketplace and trading platform supporting Solana, Bitcoin
+  (Ordinals and Runes), Ethereum, and Polygon. It provides REST APIs for accessing NFT listings,
+  collection statistics, wallet activities, offers, and token metadata across supported chains, as
+  well as trading instruction endpoints to generate and submit buy, sell, bid, and cancel orders
+  directly on the Magic Eden marketplace. The Solana API also exposes Automated Market Maker (AMM/MMM)
+  pool endpoints for liquidity provision. The Bitcoin Ordinals API covers inscriptions, rare sats,
+  and the Runes protocol. Magic Eden has announced deprecation of its Bitcoin and EVM APIs; the
+  Solana API remains the primary supported surface as of mid-2026.
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+apis:
+  - aid: magiceden:magiceden-solana-collections-api
+    name: Magic Eden Solana Collections API
+    tags:
+      - NFT
+      - Collections
+      - Solana
+      - Marketplace
+    humanURL: https://docs.magiceden.io/reference/solana-overview
+    baseURL: https://api-mainnet.magiceden.dev
+    properties:
+      - url: https://docs.magiceden.io/reference/solana-overview
+        type: Documentation
+      - url: https://docs.magiceden.io/reference/solana-overview
+        type: APIReference
+    description: >-
+      Collection data endpoints for the Magic Eden Solana NFT marketplace. Provides access to
+      collection listings, collection statistics, collection attributes, collection activities,
+      holder statistics, leaderboard rankings by volume, batch listings, popular collections by
+      time range, and launchpad collections. Supports filtering and pagination across all
+      Solana NFT collections indexed by Magic Eden.
+
+  - aid: magiceden:magiceden-solana-tokens-api
+    name: Magic Eden Solana Tokens API
+    tags:
+      - NFT
+      - Tokens
+      - Metadata
+      - Solana
+      - Marketplace
+    humanURL: https://docs.magiceden.io/reference/solana-overview
+    baseURL: https://api-mainnet.magiceden.dev
+    properties:
+      - url: https://docs.magiceden.io/reference/solana-overview
+        type: Documentation
+      - url: https://docs.magiceden.io/reference/solana-overview
+        type: APIReference
+    description: >-
+      Token and NFT data endpoints for the Magic Eden Solana marketplace. Provides token metadata
+      retrieval by mint address, token activity history, token listings, received offers on a
+      token, and general token lookup filterable by collection, owner, or token IDs. Enables
+      developers to build NFT discovery, valuation, and trading surfaces on Solana.
+
+  - aid: magiceden:magiceden-solana-wallets-api
+    name: Magic Eden Solana Wallets API
+    tags:
+      - Wallets
+      - Portfolio
+      - Offers
+      - Solana
+      - Marketplace
+    humanURL: https://docs.magiceden.io/reference/solana-overview
+    baseURL: https://api-mainnet.magiceden.dev
+    properties:
+      - url: https://docs.magiceden.io/reference/solana-overview
+        type: Documentation
+      - url: https://docs.magiceden.io/reference/solana-overview
+        type: APIReference
+    description: >-
+      Wallet-oriented endpoints for the Magic Eden Solana marketplace. Covers wallet information,
+      wallet activity history, ownership activity, escrow balance, offers made and received by a
+      wallet, tokens owned by a wallet, and NFT activity for a given user. Powers portfolio views,
+      offer management, and activity feeds for Solana NFT holders.
+
+  - aid: magiceden:magiceden-solana-trading-api
+    name: Magic Eden Solana Trading Instructions API
+    tags:
+      - Trading
+      - Buy
+      - Sell
+      - Bid
+      - Escrow
+      - Solana
+      - Marketplace
+    humanURL: https://docs.magiceden.io/reference/solana-overview
+    baseURL: https://api-mainnet.magiceden.dev
+    properties:
+      - url: https://docs.magiceden.io/reference/solana-overview
+        type: Documentation
+      - url: https://docs.magiceden.io/reference/solana-overview
+        type: APIReference
+    description: >-
+      Trading instruction endpoints for the Magic Eden Solana marketplace. Generates unsigned
+      transaction instructions for buy now, bid/offer, list/sell, cancel buy, cancel sell, change
+      buy price, change sell price, accept offer, escrow deposit, and escrow withdrawal operations.
+      Clients sign and submit the returned transaction bytes to the Solana network. Enables
+      fully programmable NFT trading on Magic Eden's Solana marketplace.
+
+  - aid: magiceden:magiceden-solana-amm-api
+    name: Magic Eden Solana AMM Pool API
+    tags:
+      - AMM
+      - MMM
+      - Liquidity
+      - Pools
+      - Solana
+      - Marketplace
+    humanURL: https://docs.magiceden.io/reference/solana-overview
+    baseURL: https://api-mainnet.magiceden.dev
+    properties:
+      - url: https://docs.magiceden.io/reference/solana-overview
+        type: Documentation
+      - url: https://docs.magiceden.io/reference/solana-overview
+        type: APIReference
+    description: >-
+      Automated Market Maker (AMM/MMM) pool endpoints for the Magic Eden Solana marketplace.
+      Supports creating, closing, updating, and depositing/withdrawing SOL from liquidity pools.
+      Provides endpoints for fulfilling buy and sell orders against pools, querying AMM pools by
+      owner or collection, and retrieving best pool offers for specific NFTs. Enables market-making
+      and algorithmic trading strategies on Solana NFT collections.
+
+  - aid: magiceden:magiceden-ordinals-api
+    name: Magic Eden Bitcoin Ordinals API
+    tags:
+      - Bitcoin
+      - Ordinals
+      - Inscriptions
+      - Rare Sats
+      - Marketplace
+    humanURL: https://docs.magiceden.io/reference/ordinals-overview
+    baseURL: https://api-mainnet.magiceden.dev
+    properties:
+      - url: https://docs.magiceden.io/reference/ordinals-overview
+        type: Documentation
+      - url: https://docs.magiceden.io/reference/ordinals-overview
+        type: APIReference
+    description: >-
+      Bitcoin Ordinals and inscription endpoints for the Magic Eden marketplace. Covers block
+      activity, collection statistics, collection search and retrieval, and inscription-level
+      marketplace data. Also supports rare sats listings, rare sats by wallet address, batch
+      listing PSBTs, and rare sat listing submission. Note: Magic Eden has announced end-of-life
+      for its Bitcoin API services effective March 27, 2026; existing integrations should plan
+      migration accordingly.
+
+  - aid: magiceden:magiceden-runes-api
+    name: Magic Eden Runes API
+    tags:
+      - Bitcoin
+      - Runes
+      - Trading
+      - Marketplace
+    humanURL: https://docs.magiceden.io/reference/ordinals-overview
+    baseURL: https://api-mainnet.magiceden.dev
+    properties:
+      - url: https://docs.magiceden.io/reference/ordinals-overview
+        type: Documentation
+      - url: https://docs.magiceden.io/reference/ordinals-overview
+        type: APIReference
+    description: >-
+      Runes protocol trading endpoints for the Magic Eden Bitcoin marketplace. Provides rune
+      activity, collection stats, market information, rune orders, UTXOs by wallet, and wallet
+      activities and balances. Trading operations include create and cancel rune sell orders,
+      execute market orders, swap runes, get rune quotes, and bulk rune sweeping (buy). Note:
+      Magic Eden has announced end-of-life for its Bitcoin API services effective March 27, 2026;
+      existing integrations should plan migration accordingly.
+
+common:
+  - type: Website
+    url: https://magiceden.io
+  - type: Portal
+    url: https://docs.magiceden.io
+  - type: Documentation
+    url: https://docs.magiceden.io
+  - type: APIReference
+    url: https://docs.magiceden.io/reference/solana-overview
+  - type: GettingStarted
+    url: https://docs.magiceden.io/reference/solana-api-keys
+  - type: Authentication
+    url: https://docs.magiceden.io/reference/solana-api-keys
+    title: API key obtained via application form; public endpoints have no-key free tier at 120 QPM
+  - type: APIKeyForm
+    url: https://airtable.com/appe8frCT8yj415Us/pagqgEFcpBlbm2DAF/form
+    title: Magic Eden API Key Application Form
+  - type: SDK
+    url: https://github.com/magiceden/magiceden-sdk
+    title: Magic Eden TypeScript SDK (multi-chain)
+  - type: Recipes
+    url: https://docs.magiceden.io/recipes
+    title: Step-by-step integration tutorials for common tasks
+  - type: ChangeLog
+    url: https://docs.magiceden.io/changelog
+  - type: GitHubOrganization
+    url: https://github.com/magiceden
+  - type: GitHubRepository
+    url: https://github.com/magiceden/magiceden-sdk
+    title: Magic Eden TypeScript SDK
+  - type: BugBounty
+    url: https://hackerone.com/magiceden
+    title: HackerOne Bug Bounty Program
+  - type: TermsOfService
+    url: https://magiceden.us/legal-policies/api-terms
+  - type: Twitter
+    url: https://twitter.com/MagicEden
+  - type: Discord
+    url: https://discord.gg/magiceden
+  - type: RateLimits
+    url: rate-limits/magiceden-rate-limits.yml
+  - type: Plans
+    url: plans/magiceden-plans.yml
+  - type: FinOps
+    url: finops/magiceden-finops.yml
+  - type: UseCases
+    data:
+      - name: NFT Portfolio Tracker
+        description: Retrieve tokens owned by a wallet and activity history to build a multi-chain NFT portfolio dashboard
+      - name: Collection Analytics
+        description: Pull collection statistics, holder distributions, and leaderboard data for market intelligence tools
+      - name: Programmatic Trading Bot
+        description: Use trading instruction endpoints to automate buy, sell, and bid operations on the Solana marketplace
+      - name: AMM Market Making
+        description: Create and manage MMM liquidity pools on Solana NFT collections for algorithmic market-making strategies
+      - name: Ordinals/Runes Explorer
+        description: Surface Bitcoin inscription and Runes marketplace data, listings, and wallet balances in explorer UIs
+      - name: Marketplace Aggregator
+        description: Aggregate Magic Eden listings alongside other venues using the batch listings and search endpoints
+  - type: Features
+    data:
+      - name: Multi-Chain Coverage
+        description: Single API surface spanning Solana, Bitcoin (Ordinals and Runes), Ethereum, and Polygon NFT markets
+      - name: Data and Trading in One
+        description: Both read-only market data endpoints and write-side transaction instruction generation in one API
+      - name: AMM Pool Management
+        description: Full lifecycle management of automated market maker liquidity pools on Solana NFT collections
+      - name: Wallet-Level Activity
+        description: Comprehensive wallet endpoints covering holdings, offers, escrow, and activity feeds
+      - name: Runes Protocol Support
+        description: Native support for the Bitcoin Runes protocol including order creation, swaps, quotes, and sweeping
+      - name: API Key Application
+        description: Free public tier available without API key; higher QPS tiers accessible via application form
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
