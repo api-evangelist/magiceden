@@ -8,7 +8,7 @@
   "name": "Magic Eden",
   "description": "Magic Eden is a multi-chain NFT marketplace and trading platform supporting Solana, Bitcoin (Ordinals and Runes), Ethereum, and Polygon. It provides REST APIs for accessing NFT listings, collection statistics, wallet activities, offers, and token metadata across supported chains.",
   "url": "https://magiceden.io",
-  "logo": "https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg",
+  "logo": "https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg",
   "sameAs": [
     "https://twitter.com/MagicEden",
     "https://discord.gg/magiceden",

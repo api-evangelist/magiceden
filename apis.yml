@@ -2,7 +2,7 @@ aid: magiceden
 url: https://raw.githubusercontent.com/api-evangelist/magiceden/refs/heads/main/apis.yml
 name: Magic Eden
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - NFT
   - NFT Marketplace
