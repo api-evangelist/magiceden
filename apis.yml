@@ -204,7 +204,7 @@ common:
   - type: APIKeyForm
     url: https://airtable.com/appe8frCT8yj415Us/pagqgEFcpBlbm2DAF/form
     title: Magic Eden API Key Application Form
-  - type: SDK
+  - type: SDKs
     url: https://github.com/magiceden/magiceden-sdk
     title: Magic Eden TypeScript SDK (multi-chain)
   - type: Recipes
