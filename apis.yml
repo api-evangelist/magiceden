@@ -188,6 +188,12 @@ apis:
       existing integrations should plan migration accordingly.
 
 common:
+  - type: VulnerabilityDisclosure
+    url: security/magiceden-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/magiceden-domain-security.yml
+  - type: Authentication
+    url: authentication/magiceden-authentication.yml
   - type: Website
     url: https://magiceden.io
   - type: Portal

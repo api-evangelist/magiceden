@@ -1,0 +1,28 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/magiceden-openapi.yaml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: ApiKeyAuth
+  type: apiKey
+  in: header
+  parameter: X-NFT-API-Key
+  sources:
+  - openapi/magiceden-openapi.yaml
+- name: cookieAuth
+  type: apiKey
+  in: header
+  parameter: Cookie
+  sources:
+  - openapi/magiceden-openapi.yaml
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  sources:
+  - openapi/magiceden-openapi.yaml
