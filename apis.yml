@@ -188,6 +188,8 @@ apis:
       existing integrations should plan migration accordingly.
 
 common:
+  - type: AgenticAccess
+    url: agentic-access/magiceden-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/magiceden-vulnerability-disclosure.yml
   - type: DomainSecurity
